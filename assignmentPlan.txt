@@ -1,0 +1,4 @@
+a. SortCode.h와 SortCode.cc에 Sort 알고리즘 구현하기
+b. 각 Sort 알고리즘 테스트를 위한 테스트 용 .cc 코드 작성하기 <- LLM 활용(gpt 활용)
+c. 현대 6개 Sort 알고리즘 의사코드 작성 -> 코드 구현
+d. LaTex
