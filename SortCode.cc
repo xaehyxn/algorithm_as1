@@ -107,8 +107,11 @@ void HeapSort(int* array, int size) {
     }
 }
 
+void Partition(int* array, int size, int p) {
 
-void QuickSort(int* array, int size) {
+}
+
+void QuickSort(int* array, int size, int p) {
 
 }
 

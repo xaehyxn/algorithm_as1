@@ -5,9 +5,10 @@ void BubbleSort(int* array, int size);
 void InsertionSort(int* array, int size);
 void SelectionSort(int* array, int size);
 void MergeSort(int* array, int p, int r);
-void MaxHeapify(int* array, int i);
-void BuildMaxHeap(int* array);
+void MaxHeapify(int* array, int heapSize, int i);
+void BuildMaxHeap(int* array, int size);
 void HeapSort(int* array, int size);
+void Partition(int* array, int size, int p);
 void QuickSort(int* array, int size);
 
 void CocktailshakerSort(int* array, int size);
