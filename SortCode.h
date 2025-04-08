@@ -8,8 +8,7 @@ void MergeSort(int* array, int p, int r);
 void MaxHeapify(int* array, int heapSize, int i);
 void BuildMaxHeap(int* array, int size);
 void HeapSort(int* array, int size);
-void Partition(int* array, int size, int p);
-void QuickSort(int* array, int size);
+void QuickSort(int* array, int p, int r);
 
 void CocktailshakerSort(int* array, int size);
 void CombSort(int* array, int size);
