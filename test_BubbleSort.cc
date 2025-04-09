@@ -2,7 +2,6 @@
 #include <chrono>
 #include <random>
 #include <cstring>
-#include <algorithm>  // std::sort
 #include "SortCode.h"  // BubbleSort 함수 선언
 
 using namespace std;

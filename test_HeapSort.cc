@@ -2,7 +2,6 @@
 #include <chrono>
 #include <random>
 #include <cstring>
-#include <algorithm>
 #include "SortCode.h" // HeapSort 함수 선언 포함
 
 using namespace std;

@@ -2,3 +2,8 @@ a. SortCode.h와 SortCode.cc에 Sort 알고리즘 구현하기
 b. 각 Sort 알고리즘 테스트를 위한 테스트 용 .cc 코드 작성하기 <- LLM 활용(gpt 활용)
 c. 현대 6개 Sort 알고리즘 의사코드 작성 -> 코드 구현
 d. LaTex
+
+** Test용 코드들은 LLM으로 작성함
+** 기존 6개의 Sort 알고리즘은 수업에서 배웠던 의사코드를 기반으로 작성함
+** QuickSort의 경우 C. A. R. Hoare. Algorithm 64: quicksort. Communications of the ACM, 4(7):321, 1961.에 적혀있는 방식대로
+   피봇을 맨 앞 요소로 설정함

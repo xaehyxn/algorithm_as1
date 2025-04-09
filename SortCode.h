@@ -10,7 +10,7 @@ void BuildMaxHeap(int* array, int size);
 void HeapSort(int* array, int size);
 void QuickSort(int* array, int p, int r);
 
-void CocktailshakerSort(int* array, int size);
+void CocktailshakerSort(int* array, int p, int r);
 void CombSort(int* array, int size);
 void LibrarySort(int* array, int size);
 void TimSort(int* array, int size);

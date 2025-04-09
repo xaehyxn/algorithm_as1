@@ -3,12 +3,17 @@
 
 void BubbleSort(int* array, int size) {
     for (int i = 0; i < size-1; i++) {
+        bool swapped = false;
         for (int j = 0; j < size-i-1; j++) {
             if (array[j] > array[j+1]) {
                 int temp = array[j];
                 array[j] = array[j+1];
                 array[j+1] = temp;
+                swapped = true;
             }
+        }
+        if (swapped == false) {
+            break;
         }
     }
 }
@@ -129,12 +134,51 @@ void QuickSort(int* array, int p, int r) {
     }
 }
 
-void CocktailshakerSort(int* array, int size) {
-
+void CocktailshakerSort(int* array, int p, int r) {
+    bool swapped = true;
+    while (swapped == true) {
+        swapped = false;
+        for (int i = p; i < r - 1; i++) {
+            if (array[i] > array[i+1]) {
+                int temp = array[i];
+                array[i] = array[i+1];
+                array[i+1] = temp;
+                swapped = true;
+            }
+        }
+        r--;
+        for (int i = r; i > p; i--) {
+            if (array[i] < array[i-1]) {
+                int temp = array[i];
+                array[i] = array[i-1];
+                array[i-1] = temp;
+                swapped = true;
+            }
+        }
+        p++;
+    }
 }
+
 void CombSort(int* array, int size) {
-
+    int gap = size - 1;
+    bool swapped = true;
+    while (!(gap == 1 && swapped == false)) {
+        swapped = false;
+        for (int i = 0; i + gap < size; i++) {
+            if (array[i] > array[i + gap]) {
+                int temp = array[i];
+                array[i] = array[i+gap];
+                array[i+gap] = temp;
+                swapped = true;
+            }
+        }
+        gap = gap/1.3;
+        if (gap < 1) {
+            gap = 1;
+        }
+    }
 }
+
 void LibrarySort(int* array, int size) {
 
 }

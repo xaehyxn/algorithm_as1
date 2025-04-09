@@ -2,7 +2,6 @@
 #include <chrono>
 #include <random>
 #include <cstring>
-#include <algorithm>
 #include "SortCode.h" // BubbleSort 함수 포함
 
 using namespace std;
