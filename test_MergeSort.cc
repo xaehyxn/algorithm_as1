@@ -1,14 +1,11 @@
 #include <iostream>
 #include <chrono>
 #include <random>
-#include <cstring>
-#include <algorithm>
-#include "SortCode.h" // MergeSort 함수 선언 포함
+#include "SortCode.h" // QuickSort 함수 선언 포함
 
 using namespace std;
 using namespace chrono;
 
-// --- 입력 생성기들 ---
 void generateSorted(int* arr, int size) {
     for (int i = 0; i < size; ++i)
         arr[i] = i;
@@ -36,7 +33,6 @@ void generatePartiallySorted(int* arr, int size) {
         arr[i] = dist(rng);
 }
 
-// --- 실행 시간 측정 ---
 double testMergeSort(void (*inputGen)(int*, int), int size, int repeat) {
     double total_time = 0.0;
     for (int i = 0; i < repeat; ++i) {
@@ -44,24 +40,26 @@ double testMergeSort(void (*inputGen)(int*, int), int size, int repeat) {
         inputGen(temp, size);
 
         auto start = high_resolution_clock::now();
-        MergeSort(temp, 0, size - 1);  // 직접 호출!
+        MergeSort(temp, 0, size - 1);
         auto end = high_resolution_clock::now();
 
         total_time += duration<double, milli>(end - start).count();
-        for (i = 0; i < size-1; i++) {
-            if (temp[i] > temp[i+1]) {
-                cout << "array is not sorted" <<endl;
+
+        for (int j = 0; j < size - 1; j++) {
+            if (temp[j] > temp[j + 1]) {
+                cout << "array is not sorted" << endl;
+                break;
             }
         }
+
         delete[] temp;
     }
     return total_time / repeat;
 }
 
-// --- 메인 ---
 int main() {
-    const int sizes[] = {1000, 10000, 100000, 1000000}; // 1K~1M
-    const int repeat = 10; // ? 1M도 10회 반복
+    const int sizes[] = {1000, 10000, 100000, 1000000};
+    const int repeat = 10;
 
     const char* types[] = {"Sorted", "Reverse", "Random", "Partially Sorted"};
     void (*generators[])(int*, int) = {

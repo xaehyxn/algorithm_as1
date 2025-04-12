@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 
+// BubbleSort
 void BubbleSort(int* array, int size) {
     for (int i = 0; i < size-1; i++) {
         bool swapped = false;
@@ -20,6 +21,8 @@ void BubbleSort(int* array, int size) {
     }
 }
 
+
+// InsertionSort
 void InsertionSort(int* array, int size) {
     for (int i = 1; i < size; i++) {
         int key = array[i];
@@ -32,6 +35,7 @@ void InsertionSort(int* array, int size) {
     }
 }
 
+// Selection Sort
 void SelectionSort(int* array, int size) {
     for (int i = 0; i < size - 1; i++) {
         int min = i;
@@ -46,6 +50,7 @@ void SelectionSort(int* array, int size) {
     }
 }
 
+// Merge Sort
 void MergeProcedure(int* array, int p, int q, int r) {
     int n1 = q - p + 1;
     int n2 = r - q;
@@ -84,6 +89,7 @@ void MergeSort(int* array, int p, int r) {
     }
 }
 
+// Heap Sort
 void MaxHeapify(int* array, int heapSize, int i) {
     int L = 2 * i + 1;
     int R = 2 * i + 2;
@@ -120,6 +126,7 @@ void HeapSort(int* array, int size) {
     }
 }
 
+//Quick Sort
 int Partition(int* array, int p, int r) {
     int i = p;
     int j = r + 1;
@@ -150,6 +157,7 @@ void QuickSort(int* array, int p, int r) {
     }
 }
 
+//Cocktail shaker sort
 void CocktailshakerSort(int* array, int p, int r) {
     bool swapped = true;
     while (swapped == true) {
@@ -175,6 +183,7 @@ void CocktailshakerSort(int* array, int p, int r) {
     }
 }
 
+// Comb Sort
 void CombSort(int* array, int size) {
     int gap = size - 1;
     bool swapped = true;
@@ -195,6 +204,189 @@ void CombSort(int* array, int size) {
     }
 }
 
+// Intro Sort
+void BinaryInsertionSort(int* array, int left, int right) {
+    for (int i = left + 1; i <= right; i++) {
+        int key = array[i];
+        int low = left;
+        int high = i - 1;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (array[mid] > key) {
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }   
+        }
+
+        for (int j = i - 1; j >= low; j--)
+            array[j + 1] = array[j];
+
+        array[low] = key;
+    }
+}
+
+int Log2(int n) {
+    int result = 0;
+    while (n > 1) {
+        n >>= 1;
+        result++;
+    }
+    return result;
+}
+
+int median(int a, int b, int c) {
+    if ((a < b && b < c) || (c < b && b < a)) return b;
+    if ((b < a && a < c) || (c < a && a < b)) return a;
+    return c;
+}
+
+void IntroSortLoop(int* array, int p, int r, int depthLimit, const int size_threshold) {
+    while (r - p > size_threshold) {
+        if (depthLimit == 0) {
+            HeapSort(array + p, r - p + 1);
+            return;
+        }
+        depthLimit--;
+        int q = Partition(array, p, r);
+        IntroSortLoop(array, q + 1, r, depthLimit, size_threshold);
+        r = q - 1;
+    }
+}
+
+int PartitionforIntro(int* array, int p, int r) { // 논문 방식 -> median-of-3 피봇 선택 -> 기존 partition 약간 수정
+    int mid = p + (r - p) / 2;
+    int pivot = median(array[p], array[mid], array[r]);
+
+    if (pivot == array[mid]) {
+        int temp = array[p];
+        array[p] = array[mid];
+        array[mid] = temp;
+    } 
+    else if (pivot == array[r]) {
+        int temp = array[p];
+        array[p] = array[r];
+        array[r] = temp;
+    }
+
+    int i = p;
+    int j = r + 1;
+    int x = array[p];
+
+    do {
+        do i++; while (i <= r && array[i] < x);
+        do j--; while (j >= p && array[j] > x);
+        if (i < j) {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    } while (i < j);
+
+    int temp = array[p];
+    array[p] = array[j];
+    array[j] = temp;
+
+    return j;
+}
+
+void IntroSort(int* array, int p, int r) {
+    const int size_threshold = 16;
+    int size = r - p + 1;
+    int depthLimit = 2 * Log2(size);
+
+    IntroSortLoop(array, p, r, depthLimit, size_threshold);
+    BinaryInsertionSort(array, p, r);
+}
+
+// Tim Sort
+struct Run {
+    int start;
+    int length;
+};
+
+void Reverse(int* array, int left, int right) {
+    while (left < right) {
+        int temp = array[left];
+        array[left] = array[right];
+        array[right] = temp;
+        left++;
+        right--;
+    }
+}
+
+int CountRunAndMakeAscending(int* array, int start, int size) {
+    int end = start + 1;
+    if (end == size) return 1;
+
+    if (array[end] < array[start]) {
+        while (end < size && array[end] < array[end - 1]) {
+            end++; 
+        }
+        Reverse(array, start, end - 1);
+    } 
+    else {
+        while (end < size && array[end] >= array[end - 1]) {
+            end++;
+        }
+    }
+
+    return end - start;
+}
+
+void TimSort(int* array, int size) {
+    int RUN = 32;
+    int max_runs = size/RUN + 2;
+    Run* run_stack = new Run[max_runs];
+    int run_count = 0;
+
+    int i = 0;
+    while (i < size) {
+        int run_len = CountRunAndMakeAscending(array, i, size);
+
+        if (run_len < RUN) {
+            int adjusted = ((run_len + RUN - 1) / RUN) * RUN; 
+            int end = (i + adjusted < size) ? (i + adjusted) : size;
+            BinaryInsertionSort(array, i, end - 1);
+            run_stack[run_count++] = {i, end - i};
+            i = end;
+        } 
+        else {
+            BinaryInsertionSort(array, i, i + run_len - 1);
+            run_stack[run_count++] = {i, run_len};
+            i += run_len;
+        }
+    }
+
+    while (run_count > 1) {
+        int new_count = 0;
+        int j = 0;
+        while (j + 1 < run_count) {
+            int left = run_stack[j].start;
+            int mid = run_stack[j].start + run_stack[j].length - 1;
+            int right = run_stack[j + 1].start + run_stack[j + 1].length - 1;
+
+            MergeProcedure(array, left, mid, right);
+
+            run_stack[new_count].start = left;
+            run_stack[new_count].length = right - left + 1;
+            new_count++;
+            j += 2;
+        }
+
+        if (j < run_count) {
+            run_stack[new_count++] = run_stack[j];
+        }
+
+        run_count = new_count;
+    }
+
+    delete[] run_stack;
+}
+
+// Library Sort
 void Rebalancing(int* S, int S_size, int* support_array, int &support_num, int &S_prefix, int &cur_round) {
     // 현재 prefix 내에서 support 요소들의 인덱스를 재수집
     support_num = 0;
@@ -216,7 +408,7 @@ void Rebalancing(int* S, int S_size, int* support_array, int &support_num, int &
             temp[k++] = S[i];
     }
     
-    // 새 prefix 구간 [0, new_prefix)를 모두 빈 공간(-1)으로 초기화
+    // 새 prefix 구간 [0, new_prefix)를 gap으로 만들기기
     for (int i = 0; i < new_prefix; i++) {
         S[i] = -1;
     }
@@ -247,7 +439,7 @@ int BinarySearch(int x, int* support_array, int support_num, int* S) {
             right = mid - 1;
         }
         else {
-            return mid;
+            return mid + 1;
         }
     }   
     return left;
@@ -450,68 +642,70 @@ void LibrarySort(int* array, int size, double epsilon) {
     delete[] S;
 }
 
-void BinaryInsertionSort(int* array, int left, int right) {
-    for (int i = left + 1; i <= right; i++) {
-        int key = array[i];
-        int low = left;
-        int high = i - 1;
+// Tournament Sort
+void BuildTournamentTree(int* array, int size, int* tree) {
+    int offset = size - 1;
 
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            if (array[mid] > key)
-                high = mid - 1;
-            else
-                low = mid + 1;
-        }
-
-        for (int j = i - 1; j >= low; j--)
-            array[j + 1] = array[j];
-
-        array[low] = key;
-    }
-}
-
-int RUN = 32;
-
-void TimSort(int* array, int size) {
-    for (int i = 0; i < size; i += RUN) {
-        int right;
-        if (i + RUN - 1 < size)
-            right = i + RUN - 1;
-        else
-            right = size - 1;
-
-        BinaryInsertionSort(array, i, right);
+    for (int i = 0; i < size; i++) {
+        tree[offset + i] = i;
     }
 
-    for (int curr_size = RUN; curr_size < size; curr_size *= 2) {
-        for (int left = 0; left < size; left += 2 * curr_size) {
-            int mid = left + curr_size - 1;
-            int right;
-            if (left + 2 * curr_size - 1 < size)
-                right = left + 2 * curr_size - 1;
-            else
-                right = size - 1;
+    for (int i = offset - 1; i >= 0; i--) {
+        int left = tree[2 * i + 1];
+        int right = tree[2 * i + 2];
 
-            if (mid < right)
-                MergeProcedure(array, left, mid, right);
+        if (array[left] < array[right]) {
+            tree[i] = left;
+        } 
+        else if (array[left] > array[right]) {
+            tree[i] = right;
+        } 
+        else {
+            tree[i] = (left < right) ? left : right;
         }
     }
 }
 
-int Log2(int n) {
-    int result = 0;
-    while (n > 1) {
-        n >>= 1;
-        result++;
+void UpdateTournamentTree(int* array, int size, int* tree, int updated_index) {
+    int idx = size - 1 + updated_index;
+
+    while (idx > 0) {
+        int parent = (idx - 1) / 2;
+        int left = tree[2 * parent + 1];
+        int right = tree[2 * parent + 2];
+
+        if (array[left] < array[right]) {
+            tree[parent] = left;
+        } 
+        else if (array[left] > array[right]) {
+            tree[parent] = right;
+        } 
+        else {
+            tree[parent] = (left < right) ? left : right;
+        }
+
+        idx = parent;
     }
-    return result;
-}
-
-void IntroSort(int* array, int size) {
-
 }
 
 void TournamentSort(int* array, int size) {
+    int tree_size = 2 * size - 1;
+    int* tree = new int[tree_size];
+    int* result = new int[size];
 
+    BuildTournamentTree(array, size, tree);
+
+    for (int i = 0; i < size; i++) {
+        int min_index = tree[0];
+        result[i] = array[min_index];
+        array[min_index] = INT_MAX;
+        UpdateTournamentTree(array, size, tree, min_index);
+    }
+
+    for (int i = 0; i < size; i++) {
+        array[i] = result[i];
+    }
+
+    delete[] tree;
+    delete[] result;
 }

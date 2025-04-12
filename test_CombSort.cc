@@ -1,7 +1,6 @@
 #include <iostream>
 #include <chrono>
 #include <random>
-#include <cstring>
 #include "SortCode.h"  // CombSort 함수 포함
 
 using namespace std;

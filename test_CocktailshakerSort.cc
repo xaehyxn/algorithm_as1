@@ -1,8 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <random>
-#include <cstring>
-#include "SortCode.h"  // CocktailshakerSort 함수 선언
+#include "SortCode.h" // MergeSort 함수 선언 포함
 
 using namespace std;
 using namespace chrono;
@@ -35,53 +34,47 @@ void generatePartiallySorted(int* arr, int size) {
         arr[i] = dist(rng);
 }
 
-// --- CocktailshakerSort 테스트 함수 ---
+// --- 실행 시간 측정 ---
 double testCocktailshakerSort(void (*inputGen)(int*, int), int size, int repeat) {
     double total_time = 0.0;
-
     for (int i = 0; i < repeat; ++i) {
         int* temp = new int[size];
         inputGen(temp, size);
 
         auto start = high_resolution_clock::now();
-        CocktailshakerSort(temp, 0, size - 1);  // ? 인덱스 기반 호출
+        CocktailshakerSort(temp, 0, size - 1);  // 직접 호출!
         auto end = high_resolution_clock::now();
 
         total_time += duration<double, milli>(end - start).count();
         for (i = 0; i < size-1; i++) {
             if (temp[i] > temp[i+1]) {
                 cout << "array is not sorted" <<endl;
+                break;
             }
         }
         delete[] temp;
     }
-
     return total_time / repeat;
 }
 
 // --- 메인 ---
 int main() {
-    const int sizes[] = {1000, 10000, 100000, 1000000};
+    const int sizes[] = {1000, 10000, 100000, 1000000}; // 1K~1M
+    const int repeat = 10; // ? 1M도 10회 반복
 
     const char* types[] = {"Sorted", "Reverse", "Random", "Partially Sorted"};
     void (*generators[])(int*, int) = {
-        generateSorted,
-        generateReverseSorted,
-        generateRandom,
-        generatePartiallySorted
+        generateSorted, generateReverseSorted, generateRandom, generatePartiallySorted
     };
 
     for (int s = 0; s < sizeof(sizes) / sizeof(int); ++s) {
         int size = sizes[s];
-        int repeat = (size == 1000000) ? 1 : 10;  // ? 크기에 따라 실행 횟수 조절
-
-        cout << "\n===== CocktailshakerSort | Input Size: " << size << ", Repeats: " << repeat << " =====\n";
+        cout << "\n===== CocktailshakerSort | Input Size: " << size << " | Repeat: " << repeat << " =====\n";
 
         for (int t = 0; t < 4; ++t) {
             double avg_time = testCocktailshakerSort(generators[t], size, repeat);
-            cout << " - " << types[t] << ": " << avg_time << " ms (avg of " << repeat << " runs)\n";
+            cout << " - " << types[t] << ": " << avg_time << " ms (avg of " << repeat << " runs)" << endl;
         }
-
         cout << endl;
     }
 

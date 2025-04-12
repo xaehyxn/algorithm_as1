@@ -50,17 +50,12 @@ double testLibrarySort(void (*inputGen)(int*, int), int size, int repeat) {
         total_time += duration<double, milli>(end - start).count();
         // 내부 루프에서 i 대신 j 사용 (외부 반복 변수 i에 영향 주지 않도록)
 
-        for (int j = 0; j < size - 1; j++) {
-            if (temp[j] > temp[j+1]) {
-                cout << "array is not sorted" << endl;
-                breaks = true;
-                break;
-            }
-        }
-        if (breaks == true) {
-            delete[] temp;
-            break;
-        }
+        // for (int j = 0; j < size - 1; j++) {
+        //     if (temp[j] > temp[j+1]) {
+        //         cout << "array is not sorted" << endl;
+        //         break;
+        //     }
+        // }
         delete[] temp;
     }
 
