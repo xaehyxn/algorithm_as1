@@ -120,25 +120,33 @@ void HeapSort(int* array, int size) {
     }
 }
 
+int Partition(int* array, int p, int r) {
+    int i = p;
+    int j = r + 1;
+    int x = array[p];
+
+    do {
+        do i++; while (i <= r && array[i] < x);
+        do j--; while (j >= p && array[j] > x);
+        if (i < j) {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    } while (i < j);
+
+    int temp = array[p];
+    array[p] = array[j];
+    array[j] = temp;
+
+    return j;
+}
+
 void QuickSort(int* array, int p, int r) {
     if (p < r) {
-        int i = p;
-        int j = r + 1;
-        int x = array[p];
-        do {
-            do i++; while (i <= r && array[i] < x);
-            do j--; while (j >= p && array[j] > x);
-            if (i < j) {
-                int temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
-        } while (i < j);
-        int temp = array[p];
-        array[p] = array[j];
-        array[j] = temp;
-        QuickSort(array, p, j-1);
-        QuickSort(array, j+1, r);
+        int q = Partition(array, p, r);
+        QuickSort(array, p, q - 1);
+        QuickSort(array, q + 1, r);
     }
 }
 
@@ -489,6 +497,15 @@ void TimSort(int* array, int size) {
                 MergeProcedure(array, left, mid, right);
         }
     }
+}
+
+int Log2(int n) {
+    int result = 0;
+    while (n > 1) {
+        n >>= 1;
+        result++;
+    }
+    return result;
 }
 
 void IntroSort(int* array, int size) {
