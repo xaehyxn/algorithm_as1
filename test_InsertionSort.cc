@@ -46,6 +46,11 @@ double testSort(void (*inputGen)(int*, int), void (*sortFunc)(int*, int), int si
         auto end = high_resolution_clock::now();
 
         total_time += duration<double, milli>(end - start).count();
+        for (i = 0; i < size-1; i++) {
+            if (temp[i] > temp[i+1]) {
+                cout << "array is not sorted" <<endl;
+            }
+        }
         delete[] temp;
     }
     return total_time / repeat;

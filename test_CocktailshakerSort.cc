@@ -48,6 +48,11 @@ double testCocktailshakerSort(void (*inputGen)(int*, int), int size, int repeat)
         auto end = high_resolution_clock::now();
 
         total_time += duration<double, milli>(end - start).count();
+        for (i = 0; i < size-1; i++) {
+            if (temp[i] > temp[i+1]) {
+                cout << "array is not sorted" <<endl;
+            }
+        }
         delete[] temp;
     }
 
