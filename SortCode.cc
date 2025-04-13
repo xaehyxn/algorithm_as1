@@ -280,18 +280,6 @@ int median(int a, int b, int c) {
     return c;
 }
 
-void IntroSortLoop(int* array, int p, int r, int depthLimit, const int size_threshold) {
-    while (r - p > size_threshold) {
-        if (depthLimit == 0) {
-            HeapSort(array + p, r - p + 1);
-            return;
-        }
-        depthLimit--;
-        int q = Partition(array, p, r);
-        IntroSortLoop(array, q + 1, r, depthLimit, size_threshold);
-        r = q - 1;
-    }
-}
 
 int PartitionforIntro(int* array, int p, int r) { // 논문 방식 -> median-of-3 피봇 선택 -> 기존 partition 약간 수정
     int mid = p + (r - p) / 2;
@@ -327,6 +315,19 @@ int PartitionforIntro(int* array, int p, int r) { // 논문 방식 -> median-of-3 피
     array[j] = temp;
 
     return j;
+}
+
+void IntroSortLoop(int* array, int p, int r, int depthLimit, const int size_threshold) {
+    while (r - p > size_threshold) {
+        if (depthLimit == 0) {
+            HeapSort(array + p, r - p + 1);
+            return;
+        }
+        depthLimit--;
+        int q = PartitionforIntro(array, p, r);
+        IntroSortLoop(array, q + 1, r, depthLimit, size_threshold);
+        r = q - 1;
+    }
 }
 
 void IntroSort(int* array, int p, int r) {
