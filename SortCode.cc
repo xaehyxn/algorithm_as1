@@ -149,9 +149,36 @@ int Partition(int* array, int p, int r) {
     return j;
 }
 
+// 실험을 위해서 필요할듯듯
+int RandomizedPartition(int* array, int p, int r) {
+    int pivot_index = p + rand() % (r - p + 1);
+    int temp = array[p];
+    array[p] = array[pivot_index];
+    array[pivot_index] = temp;
+    int i = p;
+    int j = r + 1;
+    int x = array[p];
+
+    do {
+        do i++; while (i <= r && array[i] < x);
+        do j--; while (j >= p && array[j] > x);
+        if (i < j) {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    } while (i < j);
+
+    temp = array[p];
+    array[p] = array[j];
+    array[j] = temp;
+
+    return j;
+}
+
 void QuickSort(int* array, int p, int r) {
     if (p < r) {
-        int q = Partition(array, p, r);
+        int q = RandomizedPartition(array, p, r);
         QuickSort(array, p, q - 1);
         QuickSort(array, q + 1, r);
     }
@@ -162,7 +189,8 @@ void CocktailshakerSort(int* array, int p, int r) {
     bool swapped = true;
     while (swapped == true) {
         swapped = false;
-        for (int i = p; i < r - 1; i++) {
+
+        for (int i = p; i < r; i++) {
             if (array[i] > array[i+1]) {
                 int temp = array[i];
                 array[i] = array[i+1];
@@ -170,7 +198,12 @@ void CocktailshakerSort(int* array, int p, int r) {
                 swapped = true;
             }
         }
-        r--;
+        r--; 
+        
+        if (r <= p) {
+            break;
+        }
+
         for (int i = r; i > p; i--) {
             if (array[i] < array[i-1]) {
                 int temp = array[i];
@@ -179,7 +212,11 @@ void CocktailshakerSort(int* array, int p, int r) {
                 swapped = true;
             }
         }
-        p++;
+        p++; 
+
+        if (r <= p) {
+            break;
+        }
     }
 }
 
@@ -482,9 +519,13 @@ int FindGap(int x_insert_S_pos, int* S, int S_prefix) {
     }
 }
 
-void shuffle(int* array, int size) { //랜덤 제외 배열들이 느려서 논문 찾아보니 랜덤하게 뽑는다고 해서 애초에 배열을 셔플하기
+void shuffle(int* array, int size) {
     for (int i = size - 1; i > 0; --i) {
-        int j = rand() % (i + 1);
+        // 셔플 강화 방법 (LLM으로 셔플에 관한건 찾아봤습니다다)
+        int high = rand();
+        int low = rand();
+        int j = ((high << 15) ^ low) % (i + 1);
+
         int tmp = array[i];
         array[i] = array[j];
         array[j] = tmp;
@@ -545,7 +586,7 @@ void LibrarySort(int* array, int size, int epsilon) {
             if (support_array[x_insert_sup_pos - 1] == S_prefix - 1) {
                 x_insert_S_pos = support_array[x_insert_sup_pos - 1];
                 int S_left_gap = FindGap(x_insert_S_pos, S, S_prefix);
-                for (int h = S_left_gap; h < S_prefix - 1; h--) {
+                for (int h = S_left_gap; h < S_prefix - 1; h++) {
                     S[h] = S[h+1];
                 }
                 S[S_prefix - 1] = -1;

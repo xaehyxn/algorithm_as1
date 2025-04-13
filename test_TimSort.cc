@@ -42,14 +42,14 @@ double testTimSort(void (*inputGen)(int*, int), int size, int repeat) {
 }
 
 int main() {
-    const int sizes[] = {1000, 10000, 100000};
+    const int sizes[] = {1000, 10000, 100000, 1000000};
     const int repeat = 10;
     const char* types[] = {"Sorted", "Reverse", "Random", "Partially Sorted"};
     void (*generators[])(int*, int) = {
         generateSorted, generateReverseSorted, generateRandom, generatePartiallySorted
     };
 
-    for (int s = 0; s < 3; ++s) {
+    for (int s = 0; s < 4; ++s) {
         int size = sizes[s];
         cout << "\n===== TimSort | Input Size: " << size << " | Repeat: " << repeat << " =====\n";
         for (int t = 0; t < 4; ++t) {
