@@ -403,7 +403,7 @@ void Rebalancing(int* S, int S_size, int* support_array, int &support_num, int &
     // 현재 support 요소들의 값을 임시 저장
     int* temp = new int[support_num];
     int k = 0;
-    for (int i = 0; i < S_prefix; i++) {
+    for (int i = 0; i < new_prefix; i++) {
         if (S[i] != -1)
             temp[k++] = S[i];
     }
@@ -418,6 +418,9 @@ void Rebalancing(int* S, int S_size, int* support_array, int &support_num, int &
     int size_gap = new_prefix/(support_num+1);
     for (int i = 0; i < support_num; i++) {
         int new_index = (i+1)*size_gap;
+        if (new_index == new_prefix) {
+            new_index = new_prefix - 1;
+        }
         S[new_index] = temp[i];
         support_array[i] = new_index;
     }
@@ -479,7 +482,17 @@ int FindGap(int x_insert_S_pos, int* S, int S_prefix) {
     }
 }
 
-void LibrarySort(int* array, int size, double epsilon) {
+void shuffle(int* array, int size) { //랜덤 제외 배열들이 느려서 논문 찾아보니 랜덤하게 뽑는다고 해서 애초에 배열을 셔플하기
+    for (int i = size - 1; i > 0; --i) {
+        int j = rand() % (i + 1);
+        int tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
+}
+
+void LibrarySort(int* array, int size, int epsilon) {
+    shuffle(array, size);
     int S_size = size * (1 + epsilon);
     int* S = new int[S_size];
     for (int i = 0; i < S_size; i++) {
@@ -506,8 +519,6 @@ void LibrarySort(int* array, int size, double epsilon) {
     // 나머지 원소 삽입
     for (int i = 1; i < size; i++) {
         int x = array[i];
-        bool inserted = false;
-        // 재시도 루프: rebalancing으로 영역을 확장한 후 재탐색
         int x_insert_sup_pos = BinarySearch(x, support_array, support_num, S);
         int x_insert_S_pos = -1;
         if (x_insert_sup_pos == 0) { // 맨 왼쪽 (x가 0번 보다 작은 경우)
@@ -530,10 +541,16 @@ void LibrarySort(int* array, int size, double epsilon) {
         }
         else if (x_insert_sup_pos == support_num) { // 맨 오른쪽 (x가 support_num - 1 인덱스 보다 큰 경우)
             int find_k = 0;
+            int last_k = 0;
             if (support_array[x_insert_sup_pos - 1] == S_prefix - 1) {
-                S[support_array[x_insert_sup_pos - 1] - 1] = S[support_array[x_insert_sup_pos - 1]];
-                S[support_array[x_insert_sup_pos - 1]] = -1;
                 x_insert_S_pos = support_array[x_insert_sup_pos - 1];
+                int S_left_gap = FindGap(x_insert_S_pos, S, S_prefix);
+                for (int h = S_left_gap; h < S_prefix - 1; h--) {
+                    S[h] = S[h+1];
+                }
+                S[S_prefix - 1] = -1;
+                x_insert_S_pos = S_prefix - 1;
+
             }
             for (int k = support_array[x_insert_sup_pos - 1]; k < S_prefix; k++) {
                 if (S[k] >= x) {
@@ -541,11 +558,23 @@ void LibrarySort(int* array, int size, double epsilon) {
                     find_k = 1;
                     break;
                 }
+                if (S[k] != -1) {
+                    last_k = k;
+                }
             }
             if (find_k == 0) {
-                x_insert_S_pos = S_prefix-1;
-                S[S_prefix - 2] = S[S_prefix - 1];
-                S[S_prefix - 1] = -1;
+                if(last_k != S_prefix - 1) {
+                    x_insert_S_pos = last_k + 1;
+                }
+                else {
+                    x_insert_S_pos = last_k;
+                    int S_left_gap = FindGap(x_insert_S_pos, S, S_prefix);
+                    for (int h = S_left_gap; h < S_prefix - 1; h--) {
+                        S[h] = S[h+1];
+                    }
+                    S[last_k] = -1;
+                    x_insert_S_pos = last_k;
+                }
             }
         }
         else if (S[support_array[x_insert_sup_pos]] == x) { // mid를 반환한 경우

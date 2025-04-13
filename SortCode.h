@@ -12,7 +12,7 @@ void QuickSort(int* array, int p, int r);
 
 void CocktailshakerSort(int* array, int p, int r);
 void CombSort(int* array, int size);
-void LibrarySort(int* array, int size, double epsilon);
+void LibrarySort(int* array, int size, int epsilon);
 void TimSort(int* array, int size);
 void TournamentSort(int* array, int size);
 void IntroSort(int* array, int p, int r);

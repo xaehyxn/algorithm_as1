@@ -1,8 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <random>
-#include <cstring>
-#include "SortCode.h"  // LibrarySort 함수 포함
+#include "SortCode.h" // QuickSort 함수 선언 포함
 
 using namespace std;
 using namespace chrono;
@@ -36,29 +35,26 @@ void generatePartiallySorted(int* arr, int size) {
 
 double testLibrarySort(void (*inputGen)(int*, int), int size, int repeat) {
     double total_time = 0.0;
-    const double epsilon = 1.0;
-
+    int epsilon = 1;
     for (int i = 0; i < repeat; ++i) {
-        bool breaks = false;
         int* temp = new int[size];
         inputGen(temp, size);
-    
-        auto start = high_resolution_clock::now();
-        LibrarySort(temp, size, epsilon);  // ← 당신이 구현한 LibrarySort
-        auto end = high_resolution_clock::now();
-    
-        total_time += duration<double, milli>(end - start).count();
-        // 내부 루프에서 i 대신 j 사용 (외부 반복 변수 i에 영향 주지 않도록)
 
-        // for (int j = 0; j < size - 1; j++) {
-        //     if (temp[j] > temp[j+1]) {
-        //         cout << "array is not sorted" << endl;
-        //         break;
-        //     }
-        // }
+        auto start = high_resolution_clock::now();
+        LibrarySort(temp, size, epsilon);
+        auto end = high_resolution_clock::now();
+
+        total_time += duration<double, milli>(end - start).count();
+
+        for (int j = 0; j < size - 1; j++) {
+            if (temp[j] > temp[j + 1]) {
+                cout << "array is not sorted" << endl;
+                break;
+            }
+        }
+
         delete[] temp;
     }
-
     return total_time / repeat;
 }
 
@@ -66,19 +62,20 @@ int main() {
     const int sizes[] = {1000, 10000, 100000, 1000000};
     const int repeat = 10;
 
-    const char* types[] = {"Sorted", "Reverse", "Random", "Partially Sorted"};
+    const char* types[] = {"Random", "Sorted", "Reverse", "Partially Sorted"};
     void (*generators[])(int*, int) = {
-        generateSorted, generateReverseSorted, generateRandom, generatePartiallySorted
+        generateRandom, generateSorted, generateReverseSorted, generatePartiallySorted
     };
 
     for (int s = 0; s < sizeof(sizes) / sizeof(int); ++s) {
         int size = sizes[s];
-        cout << "\n===== LibrarySort | Input Size: " << size << " | Repeat: " << repeat << " | epsilon = 0.5 =====\n";
+        cout << "\n===== LibrarySort | Input Size: " << size << " | Repeat: " << repeat << " =====\n";
 
         for (int t = 0; t < 4; ++t) {
             double avg_time = testLibrarySort(generators[t], size, repeat);
             cout << " - " << types[t] << ": " << avg_time << " ms (avg of " << repeat << " runs)" << endl;
         }
+        cout << endl;
     }
 
     return 0;
