@@ -67,8 +67,6 @@ int main() {
 
         // repeat 설정: 크기별로 다르게
         int repeat = 10;
-        if (size == 100000) repeat = 5;
-        else if (size == 1000000) repeat = 1;
 
         cout << "\n===== LibrarySort | Input Size: " << size << " | Repeat: " << repeat << " =====\n";
 
