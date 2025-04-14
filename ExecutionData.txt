@@ -1,0 +1,322 @@
+===== MergeSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.11238 ms (avg of 10 runs)
+ - Reverse: 0.22205 ms (avg of 10 runs)
+ - Random: 0.17264 ms (avg of 10 runs)
+ - Partially Sorted: 0.14585 ms (avg of 10 runs)
+
+
+===== MergeSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 1.04366 ms (avg of 10 runs)
+ - Reverse: 1.08546 ms (avg of 10 runs)
+ - Random: 1.62399 ms (avg of 10 runs)
+ - Partially Sorted: 1.72702 ms (avg of 10 runs)
+
+
+===== MergeSort | Input Size: 100000 | Repeat: 10 =====
+ - Sorted: 11.9642 ms (avg of 10 runs)
+ - Reverse: 11.8271 ms (avg of 10 runs)
+ - Random: 19.0517 ms (avg of 10 runs)
+ - Partially Sorted: 15.7066 ms (avg of 10 runs)
+
+===== MergeSort | Input Size: 1000000 | Repeat: 10 =====
+ - Sorted: 123.585 ms (avg of 10 runs)
+ - Reverse: 121.573 ms (avg of 10 runs)
+ - Random: 209.308 ms (avg of 10 runs)
+ - Partially Sorted: 181.178 ms (avg of 10 runs)
+
+
+
+
+
+
+===== InsertionSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.00144 ms (avg of 10 runs)
+ - Reverse: 0.53211 ms (avg of 10 runs)
+ - Random: 0.30033 ms (avg of 10 runs)
+ - Partially Sorted: 0.1558 ms (avg of 10 runs)
+
+===== InsertionSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 0.01543 ms (avg of 10 runs)
+ - Reverse: 153.651 ms (avg of 10 runs)
+ - Random: 27.0527 ms (avg of 10 runs)
+ - Partially Sorted: 13.5987 ms (avg of 10 runs)
+
+===== InsertionSort | Input Size: 100000 | Repeat: 5 =====
+ - Sorted: 0.1383 ms (avg of 5 runs)
+ - Reverse: 5875.9 ms (avg of 5 runs)
+ - Random: 3050.34 ms (avg of 5 runs)
+ - Partially Sorted: 1523.04 ms (avg of 5 runs)
+
+===== InsertionSort | Input Size: 1000000 | Repeat: 1 =====
+ - Sorted: 1.8102 ms (avg of 1 runs)
+ - Reverse: 1.01977e+06 ms (avg of 1 runs)
+ - Random: 367099 ms (avg of 1 runs)
+ - Partially Sorted: 389516 ms (avg of 1 runs)
+
+
+
+
+
+
+===== HeapSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.00965 ms (avg of 10 runs)
+ - Reverse: 0.01265 ms (avg of 10 runs)
+ - Random: 0.01558 ms (avg of 10 runs)
+ - Partially Sorted: 0.01686 ms (avg of 10 runs)
+
+
+===== HeapSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 0.10244 ms (avg of 10 runs)
+ - Reverse: 0.10594 ms (avg of 10 runs)
+ - Random: 0.15371 ms (avg of 10 runs)
+ - Partially Sorted: 0.1265 ms (avg of 10 runs)
+
+
+===== HeapSort | Input Size: 100000 | Repeat: 10 =====
+ - Sorted: 1.29729 ms (avg of 10 runs)
+ - Reverse: 1.1641 ms (avg of 10 runs)
+ - Random: 1.6235 ms (avg of 10 runs)
+ - Partially Sorted: 1.65092 ms (avg of 10 runs)
+
+
+===== HeapSort | Input Size: 1000000 | Repeat: 10 =====
+ - Sorted: 15.1575 ms (avg of 10 runs)
+ - Reverse: 14.8569 ms (avg of 10 runs)
+ - Random: 22.6371 ms (avg of 10 runs)
+ - Partially Sorted: 21.1593 ms (avg of 10 runs)
+
+
+
+
+
+
+
+===== CombSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.00182 ms (avg of 10 runs)
+ - Reverse: 0.00279 ms (avg of 10 runs)
+ - Random: 0.00837 ms (avg of 10 runs)
+ - Partially Sorted: 0.00594 ms (avg of 10 runs)
+
+
+===== CombSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 0.02192 ms (avg of 10 runs)
+ - Reverse: 0.03491 ms (avg of 10 runs)
+ - Random: 0.091 ms (avg of 10 runs)
+ - Partially Sorted: 0.14126 ms (avg of 10 runs)
+
+
+===== CombSort | Input Size: 100000 | Repeat: 10 =====
+ - Sorted: 0.31811 ms (avg of 10 runs)
+ - Reverse: 0.42633 ms (avg of 10 runs)
+ - Random: 1.18192 ms (avg of 10 runs)
+ - Partially Sorted: 0.99031 ms (avg of 10 runs)
+
+
+===== CombSort | Input Size: 1000000 | Repeat: 10 =====
+ - Sorted: 3.88246 ms (avg of 10 runs)
+ - Reverse: 5.17713 ms (avg of 10 runs)
+ - Random: 15.3459 ms (avg of 10 runs)
+ - Partially Sorted: 12.7328 ms (avg of 10 runs)
+
+
+
+
+
+
+===== SelectionSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.44353 ms (avg of 10 runs)
+ - Reverse: 0.4977 ms (avg of 10 runs)
+ - Random: 0.49881 ms (avg of 10 runs)
+ - Partially Sorted: 0.47559 ms (avg of 10 runs)
+
+===== SelectionSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 42.2286 ms (avg of 10 runs)
+ - Reverse: 44.4468 ms (avg of 10 runs)
+ - Random: 43.9587 ms (avg of 10 runs)
+ - Partially Sorted: 44.5845 ms (avg of 10 runs)
+
+===== SelectionSort | Input Size: 100000 | Repeat: 5 =====
+ - Sorted: 4620.99 ms (avg of 5 runs)
+ - Reverse: 7585.4 ms (avg of 5 runs)
+ - Random: 10075.4 ms (avg of 5 runs)
+ - Partially Sorted: 13062.7 ms (avg of 5 runs)
+
+===== SelectionSort | Input Size: 1000000 | Repeat: 1 =====
+ - Sorted: 811810 ms (avg of 1 runs)
+ - Reverse: 775112 ms (avg of 1 runs)
+ - Random: 908480 ms (avg of 1 runs)
+ - Partially Sorted: 1.423e+06 ms (avg of 1 runs)
+
+
+
+
+
+
+===== TimSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.02061 ms (avg of 10 runs)
+ - Reverse: 0.01731 ms (avg of 10 runs)
+ - Random: 0.10146 ms (avg of 10 runs)
+ - Partially Sorted: 0.08356 ms (avg of 10 runs)
+
+===== TimSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 0.18645 ms (avg of 10 runs)
+ - Reverse: 0.20508 ms (avg of 10 runs)
+ - Random: 1.35203 ms (avg of 10 runs)
+ - Partially Sorted: 1.09976 ms (avg of 10 runs)
+
+===== TimSort | Input Size: 100000 | Repeat: 10 =====
+ - Sorted: 2.49889 ms (avg of 10 runs)
+ - Reverse: 2.95631 ms (avg of 10 runs)
+ - Random: 15.071 ms (avg of 10 runs)
+ - Partially Sorted: 12.3492 ms (avg of 10 runs)
+
+===== TimSort | Input Size: 1000000 | Repeat: 10 =====
+ - Sorted: 37.8031 ms (avg of 10 runs)
+ - Reverse: 35.3145 ms (avg of 10 runs)
+ - Random: 175.53 ms (avg of 10 runs)
+ - Partially Sorted: 135.346 ms (avg of 10 runs)
+
+
+
+
+===== IntroSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.25649 ms (avg of 10 runs)
+ - Reverse: 0.24588 ms (avg of 10 runs)
+ - Random: 0.15821 ms (avg of 10 runs)
+ - Partially Sorted: 0.31288 ms (avg of 10 runs)
+
+
+===== IntroSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 3.53212 ms (avg of 10 runs)
+ - Reverse: 3.0467 ms (avg of 10 runs)
+ - Random: 1.89984 ms (avg of 10 runs)
+ - Partially Sorted: 3.57869 ms (avg of 10 runs)
+
+
+===== IntroSort | Input Size: 100000 | Repeat: 10 =====
+ - Sorted: 36.291 ms (avg of 10 runs)
+ - Reverse: 32.7778 ms (avg of 10 runs)
+ - Random: 20.8364 ms (avg of 10 runs)
+ - Partially Sorted: 42.4228 ms (avg of 10 runs)
+
+
+===== IntroSort | Input Size: 1000000 | Repeat: 10 =====
+ - Sorted: 407.966 ms (avg of 10 runs)
+ - Reverse: 419.247 ms (avg of 10 runs)
+ - Random: 271.866 ms (avg of 10 runs)
+ - Partially Sorted: 638.806 ms (avg of 10 runs)
+
+
+
+
+
+
+===== TournamentSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.09761 ms (avg of 10 runs)
+ - Reverse: 0.12671 ms (avg of 10 runs)
+ - Random: 0.12296 ms (avg of 10 runs)
+ - Partially Sorted: 0.11514 ms (avg of 10 runs)
+
+===== TournamentSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 1.09494 ms (avg of 10 runs)
+ - Reverse: 1.06448 ms (avg of 10 runs)
+ - Random: 1.23668 ms (avg of 10 runs)
+ - Partially Sorted: 1.14208 ms (avg of 10 runs)
+
+===== TournamentSort | Input Size: 100000 | Repeat: 10 =====
+ - Sorted: 11.2844 ms (avg of 10 runs)
+ - Reverse: 13.0025 ms (avg of 10 runs)
+ - Random: 15.8236 ms (avg of 10 runs)
+ - Partially Sorted: 14.2853 ms (avg of 10 runs)
+
+===== TournamentSort | Input Size: 1000000 | Repeat: 10 =====
+ - Sorted: 123.274 ms (avg of 10 runs)
+ - Reverse: 127.246 ms (avg of 10 runs)
+ - Random: 332.319 ms (avg of 10 runs)
+ - Partially Sorted: 283.604 ms (avg of 10 runs)
+
+
+
+
+
+===== LibrarySort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.32413 ms (avg of 10 runs)
+ - Reverse: 0.35512 ms (avg of 10 runs)
+ - Random: 0.26177 ms (avg of 10 runs)
+ - Partially Sorted: 0.22992 ms (avg of 10 runs)
+
+===== LibrarySort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 2.43652 ms (avg of 10 runs)
+ - Reverse: 2.34704 ms (avg of 10 runs)
+ - Random: 2.4184 ms (avg of 10 runs)
+ - Partially Sorted: 2.36606 ms (avg of 10 runs)
+
+===== LibrarySort | Input Size: 100000 | Repeat: 5 =====
+ - Sorted: 30.5234 ms (avg of 5 runs)
+ - Reverse: 29.2861 ms (avg of 5 runs)
+ - Random: 31.8027 ms (avg of 5 runs)
+ - Partially Sorted: 31.4891 ms (avg of 5 runs)
+
+===== LibrarySort | Input Size: 1000000 | Repeat: 1 =====
+ - Sorted: 478.795 ms (avg of 1 runs)
+ - Reverse: 493.582 ms (avg of 1 runs)
+ - Random: 438.447 ms (avg of 1 runs)
+ - Partially Sorted: 466.064 ms (avg of 1 runs)
+
+
+
+
+===== CocktailshakerSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.00439 ms (avg of 10 runs)
+ - Reverse: 2.43711 ms (avg of 10 runs)
+ - Random: 2.45149 ms (avg of 10 runs)
+ - Partially Sorted: 1.284 ms (avg of 10 runs)
+
+===== CocktailshakerSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 0.04326 ms (avg of 10 runs)
+ - Reverse: 254.374 ms (avg of 10 runs)
+ - Random: 203.328 ms (avg of 10 runs)
+ - Partially Sorted: 120.631 ms (avg of 10 runs)
+
+===== CocktailshakerSort | Input Size: 100000 | Repeat: 5 =====
+ - Sorted: 0.28892 ms (avg of 5 runs)
+ - Reverse: 41905.5 ms (avg of 5 runs)
+ - Random: 32344.3 ms (avg of 5 runs)
+ - Partially Sorted: 14614.3 ms (avg of 5 runs)
+
+===== CocktailshakerSort | Input Size: 1000000 | Repeat: 1 =====
+ - Sorted: 7.5179 ms (avg of 1 runs)
+ - Reverse: 2.73328e+06 ms (avg of 1 runs)
+ - Random: 2.10775e+06 ms (avg of 1 runs)
+ - Partially Sorted: 1.61391e+06 ms (avg of 1 runs)
+
+
+
+===== QuickSort | Input Size: 1000 | Repeat: 10 =====
+ - Sorted: 0.04514 ms (avg of 10 runs)
+ - Reverse: 0.10193 ms (avg of 10 runs)
+ - Random: 0.20327 ms (avg of 10 runs)
+ - Partially Sorted: 0.21802 ms (avg of 10 runs)
+
+
+===== QuickSort | Input Size: 10000 | Repeat: 10 =====
+ - Sorted: 0.53204 ms (avg of 10 runs)
+ - Reverse: 0.39446 ms (avg of 10 runs)
+ - Random: 0.88032 ms (avg of 10 runs)
+ - Partially Sorted: 0.75076 ms (avg of 10 runs)
+
+
+===== QuickSort | Input Size: 100000 | Repeat: 10 =====
+ - Sorted: 4.60063 ms (avg of 10 runs)
+ - Reverse: 4.1616 ms (avg of 10 runs)
+ - Random: 9.70724 ms (avg of 10 runs)
+ - Partially Sorted: 8.03962 ms (avg of 10 runs)
+
+
+===== QuickSort | Input Size: 1000000 | Repeat: 10 =====
+ - Sorted: 58.7257 ms (avg of 10 runs)
+ - Reverse: 72.5936 ms (avg of 10 runs)
+ - Random: 112.864 ms (avg of 10 runs)
+ - Partially Sorted: 99.4514 ms (avg of 10 runs)
+
+
