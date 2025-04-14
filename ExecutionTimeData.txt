@@ -230,8 +230,11 @@
  - Partially Sorted: 283.604 ms (avg of 10 runs)
 
 
-
-
+During the process of collecting experimental results, 
+the number of repetitions for Library Sort was mistakenly 
+set lower than intended. However, the execution times remained 
+consistent with expectations, and thus the reported results were not updated.
+>>
 
 ===== LibrarySort | Input Size: 1000 | Repeat: 10 =====
  - Sorted: 0.32413 ms (avg of 10 runs)
@@ -245,17 +248,17 @@
  - Random: 2.4184 ms (avg of 10 runs)
  - Partially Sorted: 2.36606 ms (avg of 10 runs)
 
-===== LibrarySort | Input Size: 100000 | Repeat: 5 =====
- - Sorted: 30.5234 ms (avg of 5 runs)
- - Reverse: 29.2861 ms (avg of 5 runs)
- - Random: 31.8027 ms (avg of 5 runs)
- - Partially Sorted: 31.4891 ms (avg of 5 runs)
+===== LibrarySort | Input Size: 100000 | Repeat: 10 =====
+ - Sorted: 30.5234 ms (avg of 10 runs)
+ - Reverse: 29.2861 ms (avg of 10 runs)
+ - Random: 31.8027 ms (avg of 10 runs)
+ - Partially Sorted: 31.4891 ms (avg of 10 runs)
 
-===== LibrarySort | Input Size: 1000000 | Repeat: 1 =====
- - Sorted: 478.795 ms (avg of 1 runs)
- - Reverse: 493.582 ms (avg of 1 runs)
- - Random: 438.447 ms (avg of 1 runs)
- - Partially Sorted: 466.064 ms (avg of 1 runs)
+===== LibrarySort | Input Size: 1000000 | Repeat: 10 =====
+ - Sorted: 478.795 ms (avg of 10 runs)
+ - Reverse: 493.582 ms (avg of 10 runs)
+ - Random: 438.447 ms (avg of 10 runs)
+ - Partially Sorted: 466.064 ms (avg of 10 runs)
 
 
 
