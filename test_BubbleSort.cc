@@ -6,7 +6,7 @@
 using namespace std;
 using namespace chrono;
 
-// 입력 생성기
+// ***** 실행 시간 측정 ***** //
 void generateSorted(int* arr, int size) {
     for (int i = 0; i < size; ++i) arr[i] = i;
 }
@@ -29,7 +29,6 @@ void generatePartiallySorted(int* arr, int size) {
     for (int i = sorted_part; i < size; ++i) arr[i] = dist(rng);
 }
 
-// 테스트 함수
 double testBubbleSort(void (*inputGen)(int*, int), int size, int repeat) {
     double total_time = 0.0;
     for (int i = 0; i < repeat; ++i) {
@@ -54,6 +53,27 @@ double testBubbleSort(void (*inputGen)(int*, int), int size, int repeat) {
     return total_time / repeat;
 }
 
+void testBubbleSortStability(void (*inputGen)(int*, int), int size, const string& input_type) {
+    int* temp = new int[size];
+    inputGen(temp, size);
+
+    BubbleSort(temp, size);
+
+    bool isSorted = true;
+    for (int i = 0; i < size - 1; ++i) {
+        if (temp[i] > temp[i + 1]) {
+            isSorted = false;
+            break;
+        }
+    }
+
+    cout << "[" << input_type << "] ";
+    if (isSorted) cout << "array is sorted\n";
+    else cout << "array is NOT sorted\n";
+
+    delete[] temp;
+}
+
 int main() {
     const int sizes[] = {1000, 10000, 100000, 1000000};
     const char* types[] = {"Sorted", "Reverse", "Random", "Partially Sorted"};
@@ -64,7 +84,6 @@ int main() {
     for (int s = 0; s < 4; ++s) {
         int size = sizes[s];
 
-        // repeat 설정: 크기별로 다르게
         int repeat = 10;
         if (size == 100000) repeat = 5;
         else if (size == 1000000) repeat = 1;

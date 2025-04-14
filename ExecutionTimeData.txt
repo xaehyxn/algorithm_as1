@@ -28,7 +28,6 @@
 
 
 
-
 ===== InsertionSort | Input Size: 1000 | Repeat: 10 =====
  - Sorted: 0.00144 ms (avg of 10 runs)
  - Reverse: 0.53211 ms (avg of 10 runs)
@@ -52,7 +51,6 @@
  - Reverse: 1.01977e+06 ms (avg of 1 runs)
  - Random: 367099 ms (avg of 1 runs)
  - Partially Sorted: 389516 ms (avg of 1 runs)
-
 
 
 
@@ -89,8 +87,6 @@
 
 
 
-
-
 ===== CombSort | Input Size: 1000 | Repeat: 10 =====
  - Sorted: 0.00182 ms (avg of 10 runs)
  - Reverse: 0.00279 ms (avg of 10 runs)
@@ -117,7 +113,6 @@
  - Reverse: 5.17713 ms (avg of 10 runs)
  - Random: 15.3459 ms (avg of 10 runs)
  - Partially Sorted: 12.7328 ms (avg of 10 runs)
-
 
 
 
@@ -151,7 +146,6 @@
 
 
 
-
 ===== TimSort | Input Size: 1000 | Repeat: 10 =====
  - Sorted: 0.02061 ms (avg of 10 runs)
  - Reverse: 0.01731 ms (avg of 10 runs)
@@ -175,6 +169,7 @@
  - Reverse: 35.3145 ms (avg of 10 runs)
  - Random: 175.53 ms (avg of 10 runs)
  - Partially Sorted: 135.346 ms (avg of 10 runs)
+
 
 
 
@@ -205,7 +200,6 @@
  - Reverse: 419.247 ms (avg of 10 runs)
  - Random: 271.866 ms (avg of 10 runs)
  - Partially Sorted: 638.806 ms (avg of 10 runs)
-
 
 
 
@@ -266,6 +260,7 @@
 
 
 
+
 ===== CocktailshakerSort | Input Size: 1000 | Repeat: 10 =====
  - Sorted: 0.00439 ms (avg of 10 runs)
  - Reverse: 2.43711 ms (avg of 10 runs)
@@ -289,6 +284,8 @@
  - Reverse: 2.73328e+06 ms (avg of 1 runs)
  - Random: 2.10775e+06 ms (avg of 1 runs)
  - Partially Sorted: 1.61391e+06 ms (avg of 1 runs)
+
+
 
 
 
@@ -318,5 +315,3 @@
  - Reverse: 72.5936 ms (avg of 10 runs)
  - Random: 112.864 ms (avg of 10 runs)
  - Partially Sorted: 99.4514 ms (avg of 10 runs)
-
-

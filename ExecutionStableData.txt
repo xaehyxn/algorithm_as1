@@ -1,0 +1,12 @@
+[BubbleSort] Stable
+[InsertionSort] Stable
+[SelectionSort] Stable
+[HeapSort] Stable
+[MergeSort] Stable
+[QuickSort] Stable
+[CocktailShakerSort] Stable
+[CombSort] Stable
+[IntroSort] Stable
+[TimSort] Stable
+[LibrarySort] Stable
+[TournamentSort] Stable
